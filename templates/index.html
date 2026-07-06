@@ -117,7 +117,7 @@
 
     <h3>Menggunakan Algoritma Random Forest</h3>
 
-    <form action="/predict" method="POST">
+    <form action="/predict" method="POST" autocomplete="off">
 
         <label for="Amount">Amount</label>
         <input
@@ -126,6 +126,7 @@
             name="Amount"
             placeholder="Contoh: 1500"
             value="{{ Amount }}"
+            autocomplete="off"
             required
         >
 
@@ -137,6 +138,7 @@
             name="V1"
             placeholder="Contoh: -0.25"
             value="{{ V1 }}"
+            autocomplete="off"
             required
         >
 
@@ -148,6 +150,7 @@
             name="V2"
             placeholder="Contoh: 0.56"
             value="{{ V2 }}"
+            autocomplete="off"
             required
         >
 
@@ -159,6 +162,7 @@
             name="V3"
             placeholder="Contoh: -1.12"
             value="{{ V3 }}"
+            autocomplete="off"
             required
         >
 
@@ -170,6 +174,7 @@
             name="V4"
             placeholder="Contoh: 0.87"
             value="{{ V4 }}"
+            autocomplete="off"
             required
         >
 
@@ -193,6 +198,20 @@
 
 </div>
 
-</body>
+<script>
+    // Jika halaman direfresh (F5), kembali ke halaman awal
+    if (performance.navigation.type === 1) {
+        window.location.href = "/";
+    }
 
+    // Untuk browser modern
+    window.addEventListener("pageshow", function(event) {
+        const nav = performance.getEntriesByType("navigation");
+        if (nav.length > 0 && nav[0].type === "reload") {
+            window.location.href = "/";
+        }
+    });
+</script>
+
+</body>
 </html>

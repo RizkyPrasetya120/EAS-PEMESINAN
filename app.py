@@ -7,7 +7,6 @@ app = Flask(__name__)
 # Load model Random Forest
 model = joblib.load("model/random_forest.pkl")
 
-
 @app.route("/")
 def home():
     return render_template(

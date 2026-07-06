@@ -7,11 +7,17 @@ app = Flask(__name__)
 # Load model Random Forest
 model = joblib.load("model/random_forest.pkl")
 
+
 @app.route("/")
 def home():
     return render_template(
         "index.html",
-        prediction_text=""
+        prediction_text="",
+        Amount="",
+        V1="",
+        V2="",
+        V3="",
+        V4=""
     )
 
 
@@ -47,14 +53,24 @@ def predict():
 
         return render_template(
             "index.html",
-            prediction_text=prediction
+            prediction_text=prediction,
+            Amount=amount,
+            V1=v1,
+            V2=v2,
+            V3=v3,
+            V4=v4
         )
 
     except Exception as e:
 
         return render_template(
             "index.html",
-            prediction_text=f"Terjadi Error: {str(e)}"
+            prediction_text=f"Terjadi Error: {str(e)}",
+            Amount=request.form.get("Amount", ""),
+            V1=request.form.get("V1", ""),
+            V2=request.form.get("V2", ""),
+            V3=request.form.get("V3", ""),
+            V4=request.form.get("V4", "")
         )
 
 
